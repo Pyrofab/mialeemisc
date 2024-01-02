@@ -22,10 +22,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import xyz.amymialee.mialeemisc.entities.IPlayerTargeting;
 import xyz.amymialee.mialeemisc.events.AutoSmeltingCallback;
-import xyz.amymialee.mialeemisc.itemgroup.MialeeItemGroup;
 import xyz.amymialee.mialeemisc.items.IAutoSmeltingItem;
 import xyz.amymialee.mialeemisc.items.IClickConsumingItem;
-import xyz.amymialee.mialeemisc.util.MialeeMath;
 
 import java.util.ArrayList;
 
@@ -75,19 +73,6 @@ public class MialeeMisc implements ModInitializer {
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
             LOGGER.info("Loaded in development environment.");
         }
-        MialeeItemGroup.create(id("mialee_group"))
-                .setIcon((i) -> {
-                    var item = Registries.ITEM.get(MialeeMath.clampLoop(i / 2 + 1, 1, Registries.ITEM.size()));
-                    return new ItemStack(item);
-                })
-                .setItems(() -> {
-                    var itemStacks = new ArrayList<ItemStack>();
-                    for(var item : Registries.ITEM) {
-                        if (item == Items.AIR) continue;
-                        itemStacks.add(item.getDefaultStack());
-                    }
-                    return itemStacks;
-                });
     }
 
     public static ItemStack enchantStack(ItemStack stack, EnchantmentLevelEntry ... entry) {
