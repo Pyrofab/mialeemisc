@@ -10,7 +10,6 @@
   ],
   "contact": {},
   "license": "All-Rights-Reserved",
-  "icon": "assets/mialeemisc/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
@@ -25,5 +24,10 @@
   ],
   "depends": {
     "fabric": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "badges": [ "library" ]
+    }
   }
 }
